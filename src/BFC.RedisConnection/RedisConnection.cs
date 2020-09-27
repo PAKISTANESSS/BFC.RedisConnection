@@ -1,4 +1,5 @@
-﻿using BFC.RedisConnection.Services;
+﻿using BFC.RedisConnection.Exceptions;
+using BFC.RedisConnection.Services;
 using BFC.RedisConnection.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
@@ -10,8 +11,13 @@ namespace BFC.RedisConnection
     {
         public static string Server;
         public static int Port;
-        public static IServiceCollection Setup(this IServiceCollection serviceCollection, string server, int? port = null)
+        public static IServiceCollection SetupRedisConnection(this IServiceCollection serviceCollection, string server, int? port = null)
         {
+            if (string.IsNullOrEmpty(server))
+            {
+                throw new RedisConnException("Server cannot be null");
+            }
+
             Server = server;
             Port = port ?? 0;
 
