@@ -1,17 +1,31 @@
-﻿//using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using System;
-//using System.Collections.Generic;
-//using System.Text;
+﻿using BFC.RedisConnection.Services.Contracts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace BFC.RedisConnection.Test
-//{
-//    [TestClass]
-//    public class RedisConnTest
-//    {
-//        [TestMethod]
-//        public void RedisConn_SetKey_Test()
-//        {
+namespace BFC.RedisConnection.Test
+{
+    [TestClass]
+    public class RedisConnTest
+    {
+        private readonly string _key = "KEY";
+        [TestMethod]
+        public async Task RedisConn_Set_ServerNameError_Test()
+        {
+            var redisConn = Mock.Of<IRedisConn>();
 
-//        }
-//    }
-//}
+            string value = "Testing";
+
+            RedisConnection.Server = "Wrong_server_name";
+
+            bool success = await redisConn.SetKey(_key, value);
+            var result = await redisConn.GetKey(_key);
+
+            Assert.IsFalse(success);
+            Assert.IsNull(result);
+        }
+    }
+}
