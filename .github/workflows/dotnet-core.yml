@@ -21,6 +21,6 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build ${{env.working-directory}} --configuration Release --no-restore
+      run: dotnet build ./src/BFC.RedisConnection/BFC.RedisConnection.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test ${{env.working-directory}} --no-restore --verbosity normal
+      run: dotnet test ./src/BFC.RedisConnection.Test/BFC.RedisConnection.Test.csproj --no-restore --verbosity normal
