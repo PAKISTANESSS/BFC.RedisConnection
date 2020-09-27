@@ -26,20 +26,23 @@ namespace BFC.RedisConnection.Services
             }
         }
 
-        public async Task<string> GetKey(string key)
+        #region String
+        public async Task<string> GetString(string key)
         {
             var db = await GetDatabase();
 
             return await db.StringGetAsync(key);
         }
 
-        public async Task<bool> SetKey(string key, string value)
+        public async Task<bool> SetString(string key, string value)
         {
             var db = await GetDatabase();
 
             return await db.StringSetAsync(key, value);
         }
+        #endregion
 
+        #region Object
         public async Task<T> GetObject<T>(string key) where T : class
         {
             var db = await GetDatabase();
@@ -59,5 +62,42 @@ namespace BFC.RedisConnection.Services
 
             return await db.StringSetAsync(key, result);
         }
+        #endregion
+
+        #region Int
+        public async Task<int> GetInt(string key)
+        {
+            var db = await GetDatabase();
+
+            var value = await db.StringGetAsync(key);
+
+            return int.Parse(value);
+        }
+
+        public async Task<bool> SetInt(string key, int value)
+        {
+            var db = await GetDatabase();
+
+            return await db.StringSetAsync(key, value.ToString());
+        }
+        #endregion
+
+        #region Bool
+        public async Task<bool> GetBool(string key)
+        {
+            var db = await GetDatabase();
+
+            var value = await db.StringGetAsync(key);
+
+            return bool.Parse(value);
+        }
+
+        public async Task<bool> SetBool(string key, bool value)
+        {
+            var db = await GetDatabase();
+
+            return await db.StringSetAsync(key, value.ToString());
+        }
+        #endregion
     }
 }

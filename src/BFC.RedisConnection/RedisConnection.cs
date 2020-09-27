@@ -15,7 +15,7 @@ namespace BFC.RedisConnection
         {
             if (string.IsNullOrEmpty(server))
             {
-                throw new RedisConnException("Server cannot be null");
+                throw new RedisConnException("Server cannot be null or empty");
             }
 
             Server = server;

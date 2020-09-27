@@ -21,8 +21,8 @@ namespace BFC.RedisConnection.Test
 
             RedisConnection.Server = "Wrong_server_name";
 
-            bool success = await redisConn.SetKey(_key, value);
-            var result = await redisConn.GetKey(_key);
+            bool success = await redisConn.SetString(_key, value);
+            var result = await redisConn.GetString(_key);
 
             Assert.IsFalse(success);
             Assert.IsNull(result);
