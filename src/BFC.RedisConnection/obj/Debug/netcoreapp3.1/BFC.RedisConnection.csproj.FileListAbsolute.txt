@@ -1,8 +1,0 @@
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\bin\Debug\netcoreapp3.1\BFC.RedisConnection.deps.json
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\bin\Debug\netcoreapp3.1\BFC.RedisConnection.dll
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\obj\Debug\netcoreapp3.1\BFC.RedisConnection.csprojAssemblyReference.cache
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\obj\Debug\netcoreapp3.1\BFC.RedisConnection.AssemblyInfoInputs.cache
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\obj\Debug\netcoreapp3.1\BFC.RedisConnection.AssemblyInfo.cs
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\bin\Debug\netcoreapp3.1\BFC.RedisConnection.pdb
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\obj\Debug\netcoreapp3.1\BFC.RedisConnection.dll
-C:\Users\Berna\source\repos\BFC\BFC.RedisConnection\obj\Debug\netcoreapp3.1\BFC.RedisConnection.pdb
