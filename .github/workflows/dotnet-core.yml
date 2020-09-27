@@ -9,7 +9,8 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      working-directory: ./src/BFC.sln
+      base-path: ./src/
+      solution-name: BFC.sln
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -17,8 +18,9 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore ${{env.working-directory}}
+      run: dotnet restore ${{env.base-path}}${{env.solution-name}}
     - name: Build
-      run: dotnet build ${{env.working-directory}} --configuration Release --no-restore
+      run: dotnet build ${{env.base-path}}${{env.solution-name}} --configuration Release --no-restore
     - name: Test
-      run: dotnet test ${{env.working-directory}} --no-restore --verbosity normal
+      run: dotnet test ${{env.base-path}}${{env.solution-name}} --no-restore --verbosity normal
+      
