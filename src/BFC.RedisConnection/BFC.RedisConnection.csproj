@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Bernardo Coelho</Authors>
-    <Version>1.0.14</Version>
+    <Version>1.0.18</Version>
     <RepositoryUrl>https://github.com/PAKISTANESSS/BFC.RedisConnection</RepositoryUrl>
     <PackageTags>Redis .NETCore</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
