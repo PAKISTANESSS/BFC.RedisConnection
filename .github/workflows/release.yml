@@ -3,7 +3,8 @@ name: .NET Core build & publish to nuget
 on:
   push:
     branches: [ master ]
-
+  pull_request:
+    branches: [ master ]
 jobs:
   build:
     runs-on: ubuntu-latest
