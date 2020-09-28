@@ -1,9 +1,7 @@
-name: .NET Core build & publish to nuget
+name: Build, Pack & Publish to Nuget
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 jobs:
   build:
