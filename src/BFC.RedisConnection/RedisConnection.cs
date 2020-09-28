@@ -8,6 +8,7 @@ using System;
 namespace BFC.RedisConnection
 {
     public static class RedisConnection
+
     {
         public static string Server;
         public static int Port;
