@@ -22,6 +22,16 @@ jobs:
       run: dotnet build ${{env.base-path}}${{env.solution-name}} --configuration Release --no-restore
     - name: Test
       run: dotnet test ${{env.base-path}}${{env.solution-name}} --no-restore --verbosity normal
+  sonarQubeTrigger:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@master
+      with:
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONAR_TOKEN }}
   buildnumber:
     needs: build
     runs-on: ubuntu-latest
