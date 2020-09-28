@@ -1,10 +1,8 @@
-name: Build development and run sonarqube
+name: Build and run sonarqube
 
 on:
-  push:
-    branches: [ development ]
   pull_request:
-    branches: [ development ]
+    branches: [ development, master ]
 jobs:
   build:
     runs-on: ubuntu-latest
