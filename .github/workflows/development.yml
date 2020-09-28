@@ -1,0 +1,36 @@
+name: Build development and run sonarqube
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ development ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      base-path: ./src/
+      solution-name: BFC.sln
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore ${{env.base-path}}${{env.solution-name}}
+    - name: Build
+      run: dotnet build ${{env.base-path}}${{env.solution-name}} --configuration Release --no-restore
+    - name: Test
+      run: dotnet test ${{env.base-path}}${{env.solution-name}} --no-restore --verbosity normal
+  sonarQubeTrigger:
+    needs: build
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@master
+      with:
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONAR_TOKEN }}  
