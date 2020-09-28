@@ -23,6 +23,7 @@ jobs:
     - name: Test
       run: dotnet test ${{env.base-path}}${{env.solution-name}} --no-restore --verbosity normal
   sonarQubeTrigger:
+    needs: build
     name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +34,7 @@ jobs:
         host: ${{ secrets.SONARQUBE_HOST }}
         login: ${{ secrets.SONAR_TOKEN }}
   buildnumber:
-    needs: build
+    needs: sonarQubeTrigger
     runs-on: ubuntu-latest
     outputs:
       build_number: ${{ steps.buildnumber.outputs.build_number }}
